@@ -11,6 +11,8 @@
         }
     })
 
+    const number = 1;
+
     function deleteProject(project) {
         if (confirm("Are you sure you want to Delete")) {
             router.post(route('projects.delete', project), {
@@ -55,16 +57,15 @@
                                     <th class="text-left py-2">Image</th>
                                     <th class="text-left py-2">Edit</th>
                                     <th class="text-left py-2">Delete</th>
-
                                 </tr>
                             </thead>
                             <tbody class="border-b-2">
-                                <tr v-for="project in props.projects.data" :key="project.id">
+                                <tr v-for="(project, key) in props.projects.data" :key="key">
                                     <td class="text-left py-2">{{ project.name }}</td>
                                     <td class="text-left py-2">{{ project.slug }}</td>
                                     <td class="text-left py-2">{{ project.user.name }}</td>
                                     <td class="text-left py-2 overflow-hidden">
-                                        <img :src="`storage/${project.image}`" alt="product.name" class="w-10 h-10 rounded-lg">
+                                        <img :src="project.image" alt="product.name" class="w-10 h-10 rounded-lg">
                                     </td>
                                     <td class="text-left py-2">
                                         <Link :href="route('projects.edit', project)" class="px-4 py-1 bg-gray-600 hover:bg-gray-500 text-gray-50 hover:text-gray-100 rounded-lg">Edit</Link>

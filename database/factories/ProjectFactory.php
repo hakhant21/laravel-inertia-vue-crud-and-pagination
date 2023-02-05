@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,12 +19,12 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => rand(1, 100),
+            'user_id' => rand(1, 30),
             'name' => fake()->name(),
             'slug' => Str::slug(fake()->name()),
             'description' => fake()->sentence(),
-            'content' => fake()->paragraph(), // password
-            'image' => fake()->imageUrl(360, 360, 'nature', true, 'ocean'),
+            'content' => fake()->paragraph(),
+            'image' => 'https://source.unsplash.com/random/300x300',
         ];
     }
 }
