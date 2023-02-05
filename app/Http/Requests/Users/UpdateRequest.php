@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Projects;
+namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,10 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'slug' => 'nullable',
-            'description' => 'nullable',
-            'content' => 'required',
-            'image' => 'nullable'
+            'email' => 'required',
+            'password' => ['required', 'confirmed']
         ];
     }
 }

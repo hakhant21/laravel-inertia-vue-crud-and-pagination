@@ -4,8 +4,7 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import TextInput from '@/Components/TextInput.vue';
     import PrimaryButton from '@/Components/PrimaryButton.vue';
-
-
+    import InputError from '@/Components/InputError.vue';
 
     const form = useForm({
         'name': '',

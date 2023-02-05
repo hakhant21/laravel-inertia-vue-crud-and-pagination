@@ -8,10 +8,6 @@
         projects: {
             type: Object,
             default: () => ({})
-        },
-        image: {
-            type: String,
-            default: () => ({})
         }
     })
 

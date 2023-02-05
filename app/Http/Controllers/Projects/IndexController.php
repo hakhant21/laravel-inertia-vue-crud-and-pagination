@@ -60,7 +60,11 @@ class IndexController extends Controller
 
     public function delete(Project $project)
     {
-        $project->delete();
-        return to_route('projects.index')->with('message', 'Your project has been deleted successfully...');
+        if($project->user_id == auth()->user()->id) {
+            $project->delete();
+            return to_route('projects.index')->with('message', 'Your project has been deleted successfully...');
+        } else {
+            return redirect()->route('projects.index')->with('message', 'You do not have permissions to delete this project...');
+        }
     }
 }
