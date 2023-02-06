@@ -43,7 +43,7 @@
                     <div class="flex justify-between">
                         <div class="p-4 text-gray-500 text-center text-xl font-bold">Edit Project</div>
                         <div class="p-4">
-                            <Link :href="route('projects.index')" class="px-4 py-1 bg-indigo-600 hover:bg-indigo-500 text-indigo-50 hover:text-indigo-100 rounded-lg">Go Back</Link>
+                            <Link :href="route('projects.index')" class="px-4 py-1 bg-gray-600 hover:bg-gray-500 text-gray-50 hover:text-gray-100 rounded-lg">Go Back</Link>
                         </div>
                     </div>
                     <div class="max-w-md mx-auto">

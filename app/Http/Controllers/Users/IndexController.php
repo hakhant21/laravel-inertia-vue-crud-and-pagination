@@ -9,15 +9,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Users\CreateRequest;
 use App\Http\Requests\Users\UpdateRequest;
+use App\Http\Resources\Users\UserResource;
 
 class IndexController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $users = User::paginate(10)->withQueryString();
+        $filters = User::query()
+                    ->when($request->input('search'), function($query, $search){
+                        $query->where('name', 'like', "%{$search}%");
+                    })
+                    ->paginate(10)->withQueryString();
+
+        $users = UserResource::collection($filters);
 
         return Inertia::render('Users/Index', [
-            'users' => $users
+            'users' => $users,
+            'filters' => $request->only('search')
         ]);
     }
 

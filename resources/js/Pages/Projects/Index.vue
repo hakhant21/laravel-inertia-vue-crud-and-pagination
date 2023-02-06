@@ -79,7 +79,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <Pagination :links="props.projects.links"/>
+                        <Pagination :links="props.projects.meta.links"/>
                     </div>
                 </div>
             </div>

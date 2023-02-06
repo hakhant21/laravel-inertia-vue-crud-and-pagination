@@ -9,14 +9,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Projects\CreateRequest;
 use App\Http\Requests\Projects\UpdateRequest;
+use App\Http\Resources\Projects\ProjectResource;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $projects = Project::with('user')->paginate(10)->withQueryString();
+        $projects = ProjectResource::collection(Project::with('user')->paginate(10)->withQueryString());
+
         return Inertia::render('Projects/Index',[
-            'projects' => $projects,
+            'projects' => $projects
         ]);
     }
 

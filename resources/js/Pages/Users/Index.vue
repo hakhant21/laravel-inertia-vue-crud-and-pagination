@@ -1,16 +1,29 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { ref, watch } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import Pagination from '@/Components/Pagination.vue'
-import DangerButton from '@/Components/DangerButton.vue'
 
 
 const props = defineProps({
-        users: {
-            type: Object,
-            default: () => ({})
-        }
+    users: {
+        type: Object,
+        default: () => ({})
+    },
+    filters: {
+        type: Object
+    }
+})
+
+let search = ref(props.filters.search)
+
+watch(search, value => {
+    router.get(route('users.index', { search: value }), {
+        preserveState: true,
+        replace: true
     })
+})
+
 
 </script>
 
@@ -39,6 +52,11 @@ const props = defineProps({
                             <Link :href="route('users.create')" class="px-4 py-1 bg-gray-600 hover:bg-gray-500 text-gray-50 hover:text-gray-100 rounded-lg">Create</Link>
                         </div>
                     </div>
+                    <div class="flex justify-end mr-4">
+                        <div>
+                            <input type="text" name="search" v-model.prevent="search" placeholder="Search By Name" class="py-1 px-1 rounded-lg mx-2 border">
+                        </div>
+                    </div>
 
                     <div class="max-w-full mx-auto py-7 overflow-hidden p-2">
                         <table class="min-w-full mx-4">
@@ -59,7 +77,7 @@ const props = defineProps({
                                 </tr>
                             </tbody>
                         </table>
-                        <Pagination :links="props.users.links"/>
+                        <Pagination :links="props.users.meta.links"/>
                     </div>
                 </div>
             </div>
