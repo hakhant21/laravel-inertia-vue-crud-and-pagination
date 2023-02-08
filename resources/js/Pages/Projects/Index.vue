@@ -55,8 +55,7 @@
                                     <th class="text-left py-2">Slug</th>
                                     <th class="text-left py-2">Username</th>
                                     <th class="text-left py-2">Image</th>
-                                    <th class="text-left py-2">Edit</th>
-                                    <th class="text-left py-2">Delete</th>
+                                    <th class="text-center py-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="border-b-2">
@@ -67,14 +66,17 @@
                                     <td class="text-left py-2 overflow-hidden">
                                         <img :src="project.image" alt="product.name" class="w-10 h-10 rounded-lg">
                                     </td>
-                                    <td class="text-left py-2">
-                                        <Link :href="route('projects.edit', project)" class="px-4 py-1 bg-gray-600 hover:bg-gray-500 text-gray-50 hover:text-gray-100 rounded-lg">Edit</Link>
-
-                                    </td>
-                                    <td class="text-left py-2">
+                                    <td class="text-center py-2">
+                                        <Link :href="route('projects.edit', project)" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                            Edit
+                                        </Link>
+                                            &nbsp;
                                         <DangerButton @click="deleteProject(project)">
                                             Delete
                                         </DangerButton>
+                                    </td>
+                                    <td class="text-left py-2">
+
                                     </td>
                                 </tr>
                             </tbody>

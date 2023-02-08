@@ -19,7 +19,8 @@ class IndexController extends Controller
                     ->when($request->input('search'), function($query, $search){
                         $query->where('name', 'like', "%{$search}%");
                     })
-                    ->paginate(10)->withQueryString();
+                    ->paginate(10)
+                    ->withQueryString();
 
         $users = UserResource::collection($filters);
 

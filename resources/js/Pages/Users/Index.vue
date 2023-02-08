@@ -11,7 +11,8 @@ const props = defineProps({
         default: () => ({})
     },
     filters: {
-        type: Object
+        type: Object,
+        default: () => ({})
     }
 })
 
